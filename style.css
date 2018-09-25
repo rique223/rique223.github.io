@@ -1,27 +1,48 @@
 html, body{
 	margin: 0;
-	padding: 0;
 	overflow-x: hidden;
+	line-height: 1.5;
+}
+
+html{
+	box-sizing: border-box;
 }
 
 /*Tamanho dos headers h2*/
 h2{
-	font-size: 32px;
+	font-size: 30px;
 }
 
 /*Tamanho dos headers h5*/
 h5{
 	font-size: 18px;
+	opacity: 0.60;
+	font-weight: 400;
+	margin: 10px 0;
 }
 
 /*Tamanho dos headers h6*/
 h6{
 	font-size: 16px;
+	font-weight: 400;
+	margin: 10px 0;
 }
 
 /*adiciona 5% de margem à direita dos icones da área de informações básicas*/
 .marg{
-	margin-right: 5%;
+	margin-right: 16px;
+}
+
+.cont{
+	padding: 0 8px;
+	box-sizing: inherit;
+	display: block;
+}
+
+.ava{
+	position: relative;
+	text-align: center;
+	padding: 0;
 }
 
 /*Define a cor de fundo da div principal e a fonte à ser utilizada por elementos dentro do body*/
@@ -33,68 +54,81 @@ body{
 /*Estilo dos tópicos que vão nas divs de profissões e cursos*/
 .trab{
 	padding: 0.01em 16px;
-	display: block;
 	box-sizing: inherit;
 }
 
 /*Coloca as divs lado a lado*/
 .corpo{
-	display: flex;
-}
-
-/*Cor a ser utilizada no nome*/
-h2#nome{
-	color: #000000;
+	display: block;
+	padding: 0 8px;
+	margin: auto;
+	margin-top: 16px;
+	max-width: 1400px;
 }
 
 /*Cor a ser utilizada nos headers principais*/
 h2#exp{
 	color: #009688;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	font-weight: 400;
+	margin: 10px 0;
 }
 
 /*Define a cor dos títulos das headres principais*/
 .info{
 	font-family: 'Roboto', sans-serif;
-	color: #009688;
+	color: #009688;	
+	padding: 0.01em 16px;
+}
+
+/*Define o estilo do nome que está sobre o avatar*/
+.def{
+	color:  #ffffff;
+	padding: 0.01em 16px;
+	position: absolute;
+	bottom: 8px;
+	left: 16px;
 }
 
 /*define o tamanho e estilo das divs de apresentação*/
 .apre{
 	width: 33.333333333333333333333333333333333333333%;
 	background-color: #ffffff;
-	padding: 8px;
-	margin: 8px;
+	margin: 0 16px 0 16px;
 	box-shadow:0px 0px 15px #ADADAD;
+	float: left;
 }
 
 /*Define o tamanho das divs principais*/
 .princ{
 	width: 64.25%;
+	float: left;
+	display: block;
 }
 
 /*Define o estilo das divs principais*/
 .princ1{
 	width: 100%;
 	background-color: #ffffff;
-	padding: 8px;
-	margin: 8px;
+	padding: 0.01em 16px;
+	margin-bottom: 16px;
 	box-shadow:0px 0px 15px #ADADAD;
 }
 
-/*O mesmo para a segunda parte das divs principais*/
+/*O mesmo para a segunda parte das dissssvs principais*/
 .princ2{
 	width: 100%;
 	background-color: #ffffff;
-	padding: 8px;
-	margin: 8px;
+	padding: 0.01em 16px;
 	box-shadow:0px 0px 15px #ADADAD;
 }
 
-/*define o estulo da tag de profissão atual*/
+/*define o estilo da tag de profissão atual*/
 .tag{
 	background-color: #009688;
 	border-radius: 4px;
-	display: inline-block;
+	/*display: inline-block;*/
 	padding-left: 8px;
 	padding-right: 8px;
 	text-align: center;
@@ -108,15 +142,14 @@ h2#exp{
 	font-size: 12px;
 	border-radius: 16px;
 	box-sizing: inherit;
-	display: block;
 }
 
 /*Define o estilo da div menor que representa a progress bar*/
 .skills {
-	width: 90%;
-    text-align: center; /* Right-align text */
-    padding: 0.01em 16px; /* Add some padding */
-    color: white; /* White text color */
+	width: 100%;
+    text-align: center;
+    padding: 0.01em 16px; 
+    color: white; 
 	border-radius: 16px;
 }
 
@@ -137,4 +170,7 @@ h2#exp{
 	padding: 0.01em 16px;
 	display: block;
 	box-sizing: inherit;
+	content:"";
+	display: table;
+	clear: both;
 }
