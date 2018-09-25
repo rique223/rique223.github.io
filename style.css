@@ -1,0 +1,140 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+/*Tamanho dos headers h2*/
+h2{
+	font-size: 32px;
+}
+
+/*Tamanho dos headers h5*/
+h5{
+	font-size: 18px;
+}
+
+/*Tamanho dos headers h6*/
+h6{
+	font-size: 16px;
+}
+
+/*adiciona 5% de margem à direita dos icones da área de informações básicas*/
+.marg{
+	margin-right: 5%;
+}
+
+/*Define a cor de fundo da div principal e a fonte à ser utilizada por elementos dentro do body*/
+body{
+	background-color: #ececec;
+	font-family: 'Roboto', sans-serif;
+}
+
+/*Estilo dos tópicos que vão nas divs de profissões e cursos*/
+.trab{
+	padding: 0.01em 16px;
+	display: block;
+	box-sizing: inherit;
+}
+
+/*Coloca as divs lado a lado*/
+.corpo{
+	display: flex;
+}
+
+/*Cor a ser utilizada no nome*/
+h2#nome{
+	color: #000000;
+}
+
+/*Cor a ser utilizada nos headers principais*/
+h2#exp{
+	color: #009688;
+}
+
+/*Define a cor dos títulos das headres principais*/
+.info{
+	font-family: 'Roboto', sans-serif;
+	color: #009688;
+}
+
+/*define o tamanho e estilo das divs de apresentação*/
+.apre{
+	width: 33.333333333333333333333333333333333333333%;
+	background-color: #ffffff;
+	padding: 8px;
+	margin: 8px;
+	box-shadow:0px 0px 15px #ADADAD;
+}
+
+/*Define o tamanho das divs principais*/
+.princ{
+	width: 64.25%;
+}
+
+/*Define o estilo das divs principais*/
+.princ1{
+	width: 100%;
+	background-color: #ffffff;
+	padding: 8px;
+	margin: 8px;
+	box-shadow:0px 0px 15px #ADADAD;
+}
+
+/*O mesmo para a segunda parte das divs principais*/
+.princ2{
+	width: 100%;
+	background-color: #ffffff;
+	padding: 8px;
+	margin: 8px;
+	box-shadow:0px 0px 15px #ADADAD;
+}
+
+/*define o estulo da tag de profissão atual*/
+.tag{
+	background-color: #009688;
+	border-radius: 4px;
+	display: inline-block;
+	padding-left: 8px;
+	padding-right: 8px;
+	text-align: center;
+}
+
+*{box-sizing:border-box}/*Define o box-sizing ideal para implementação das progress bars*/
+
+/*Define o estilo da div maior que guarda a progress bar*/
+.container {
+    background-color: #dddddd;
+	font-size: 12px;
+	border-radius: 16px;
+	box-sizing: inherit;
+	display: block;
+}
+
+/*Define o estilo da div menor que representa a progress bar*/
+.skills {
+	width: 90%;
+    text-align: center; /* Right-align text */
+    padding: 0.01em 16px; /* Add some padding */
+    color: white; /* White text color */
+	border-radius: 16px;
+}
+
+/*Funções que definem o progresso em cada habilidade citada*/
+.c {width: 90%; background-color: #009688;}
+.java{width: 80%; background-color: #009688;}
+.photoshop{width: 75%; background-color: #009688;}
+.illustrator{width: 60%; background-color: #009688;} 
+.português{height: 24px; height: 24px; width: 100%; background-color: #009688;}
+.Inglês{height: 24px; width: 90%; background-color: #009688;}
+.Espanhol{height: 24px; width: 40%; background-color: #009688;}
+
+/*Estilo do rodapé no final da página*/
+.roda{
+	background-color: #009688;
+	margin-top: 16px;
+	text-align: center;
+	padding: 0.01em 16px;
+	display: block;
+	box-sizing: inherit;
+}
