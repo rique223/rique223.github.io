@@ -1,6 +1,7 @@
 html, body{
 	margin: 0;
 	overflow-x: hidden;
+	font-size: 1.2vw;
 	line-height: 1.5;
 }
 
@@ -16,7 +17,6 @@ h2{
 /*Tamanho dos headers h5*/
 h5{
 	font-size: 1.3177vw;
-	opacity: 0.60;
 	font-weight: 400;
 	margin: 10px 0;
 }
@@ -47,7 +47,7 @@ h6{
 
 /*Define a cor de fundo da div principal e a fonte à ser utilizada por elementos dentro do body*/
 body{
-	background-color: #ececec;
+	background-color: #f1f1f1;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -93,10 +93,10 @@ h2#exp{
 
 /*define o tamanho e estilo das divs de apresentação*/
 .apre{
-	width: 30%;
+	width: 31%;
 	background-color: #ffffff;
 	margin: 0 16px 16px 16px;
-	box-shadow:0px 0px 15px #ADADAD;
+	box-shadow:0px 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 	float: left;
 }
 
@@ -113,7 +113,7 @@ h2#exp{
 	background-color: #ffffff;
 	padding: 0.01em 16px;
 	margin-bottom: 16px;
-	box-shadow:0px 0px 15px #ADADAD;
+	box-shadow:0px 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
 /*O mesmo para a segunda parte das dissssvs principais*/
@@ -121,7 +121,7 @@ h2#exp{
 	width: 100%;
 	background-color: #ffffff;
 	padding: 0.01em 16px 16px;
-	box-shadow:0px 0px 15px #ADADAD;
+	box-shadow:0px 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
 /*define o estilo da tag de profissão atual*/
@@ -168,7 +168,6 @@ h2#exp{
 	margin-top: 16px;
 	border-top: 1px;
 	text-align: center;
-	padding-top: 20px;
 	display: block;
 	box-sizing: inherit;
 	content:"";
