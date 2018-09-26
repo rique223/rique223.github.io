@@ -10,12 +10,12 @@ html{
 
 /*Tamanho dos headers h2*/
 h2{
-	font-size: 30px;
+	font-size: 2.1961vw;
 }
 
 /*Tamanho dos headers h5*/
 h5{
-	font-size: 18px;
+	font-size: 1.3177vw;
 	opacity: 0.60;
 	font-weight: 400;
 	margin: 10px 0;
@@ -23,7 +23,7 @@ h5{
 
 /*Tamanho dos headers h6*/
 h6{
-	font-size: 16px;
+	font-size: 1.1713vw;
 	font-weight: 400;
 	margin: 10px 0;
 }
@@ -154,10 +154,10 @@ h2#exp{
 }
 
 /*Funções que definem o progresso em cada habilidade citada*/
-.c {width: 90%; background-color: #009688;}
-.java{width: 80%; background-color: #009688;}
-.photoshop{width: 75%; background-color: #009688;}
-.illustrator{width: 60%; background-color: #009688;} 
+.c {height: 18px; width: 90%; background-color: #009688;}
+.java{height: 18px; width: 80%; background-color: #009688;}
+.photoshop{height: 18px; width: 75%; background-color: #009688;}
+.illustrator{height: 18px; width: 60%; background-color: #009688;} 
 .português{height: 24px; height: 24px; width: 100%; background-color: #009688;}
 .Inglês{height: 24px; width: 90%; background-color: #009688;}
 .Espanhol{height: 24px; width: 40%; background-color: #009688;}
