@@ -93,16 +93,16 @@ h2#exp{
 
 /*define o tamanho e estilo das divs de apresentação*/
 .apre{
-	width: 33.333333333333333333333333333333333333333%;
+	width: 30%;
 	background-color: #ffffff;
-	margin: 0 16px 0 16px;
+	margin: 0 16px 16px 16px;
 	box-shadow:0px 0px 15px #ADADAD;
 	float: left;
 }
 
 /*Define o tamanho das divs principais*/
 .princ{
-	width: 64.25%;
+	width: 64.25vw;
 	float: left;
 	display: block;
 }
@@ -120,7 +120,7 @@ h2#exp{
 .princ2{
 	width: 100%;
 	background-color: #ffffff;
-	padding: 0.01em 16px;
+	padding: 0.01em 16px 16px;
 	box-shadow:0px 0px 15px #ADADAD;
 }
 
