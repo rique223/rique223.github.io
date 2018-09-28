@@ -1,140 +1,136 @@
-html, body{
-	margin: 0;
-	overflow-x: hidden;
-	font-size: 1.2vw;
-	line-height: 1.5;
-}
-
 html{
+	overflow-x: hidden;
 	box-sizing: border-box;
 }
 
-/*Tamanho dos headers h2*/
+html, body{
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+body{
+	color: #000000;
+	background-color: #f1f1f1;
+	margin: 0;
+}
+
 h2{
-	font-size: 2.1961vw;
+	font-size: 30px;
+	font-weight: 400;
+	margin: 10px 0;
 }
 
 /*Tamanho dos headers h5*/
 h5{
-	font-size: 1.3177vw;
+	font-size: 18px;
 	font-weight: 400;
 	margin: 10px 0;
 }
 
 /*Tamanho dos headers h6*/
 h6{
-	font-size: 1.1713vw;
+	font-size: 16px;
 	font-weight: 400;
 	margin: 10px 0;
 }
 
-/*adiciona 5% de margem à direita dos icones da área de informações básicas*/
-.marg{
-	margin-right: 16px;
+.pcontainer{
+	max-width: 1400px;
+	margin-top: 16px;
 }
 
-.cont{
+.grid{
 	padding: 0 8px;
-	box-sizing: inherit;
-	display: block;
+}
+
+.leftc{
+	padding: 0 8px;
+	width: 98%;
+	float: left;
+}
+
+.rightc{
+	padding: 0 8px 8px 8px;
+	width: 98%;
+	float: left;
+}
+
+.info{
+	padding: 0.01em 16px;
+}
+
+.apre{
+	color: #757575;
+	background-color: #ffffff;
+	box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
 }
 
 .ava{
 	position: relative;
-	text-align: center;
-	padding: 0;
 }
 
-/*Define a cor de fundo da div principal e a fonte à ser utilizada por elementos dentro do body*/
-body{
-	background-color: #f1f1f1;
-	font-family: 'Roboto', sans-serif;
-}
-
-/*Estilo dos tópicos que vão nas divs de profissões e cursos*/
-.trab{
-	padding: 0.01em 16px;
-	box-sizing: inherit;
-}
-
-/*Coloca as divs lado a lado*/
-.corpo{
-	display: block;
-	padding: 0 8px;
-	margin: auto;
-	margin-top: 16px;
-	max-width: 1400px;
-}
-
-/*Cor a ser utilizada nos headers principais*/
-h2#exp{
-	color: #009688;
-	padding-top: 16px;
-	padding-bottom: 16px;
-	font-weight: 400;
-	margin: 10px 0;
-}
-
-/*Define a cor dos títulos das headres principais*/
-.info{
-	font-family: 'Roboto', sans-serif;
-	color: #009688;	
-	padding: 0.01em 16px;
-}
-
-/*Define o estilo do nome que está sobre o avatar*/
-.def{
-	color:  #ffffff;
+.nome{
+	color: #ffffff;
 	padding: 0.01em 16px;
 	position: absolute;
-	bottom: 8px;
-	left: 16px;
+	left: 0;
+	bottom: 0;
 }
 
-/*define o tamanho e estilo das divs de apresentação*/
-.apre{
-	width: 31%;
+.icon{
+	margin-right: 16px;
+	font-size: 18px;
+}
+
+.rightc1{
+	color: #000000;
 	background-color: #ffffff;
-	margin: 0 16px 16px 16px;
-	box-shadow:0px 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-	float: left;
-}
-
-/*Define o tamanho das divs principais*/
-.princ{
-	width: 64.25vw;
-	float: left;
-	display: block;
-}
-
-/*Define o estilo das divs principais*/
-.princ1{
-	width: 100%;
-	background-color: #ffffff;
-	padding: 0.01em 16px;
 	margin-bottom: 16px;
-	box-shadow:0px 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	padding: 0.01em 16px;
 }
 
-/*O mesmo para a segunda parte das dissssvs principais*/
-.princ2{
-	width: 100%;
+.rightc2{
+	color: #000000;
 	background-color: #ffffff;
-	padding: 0.01em 16px 16px;
-	box-shadow:0px 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	padding: 0.01em 16px;
 }
 
-/*define o estilo da tag de profissão atual*/
+.work{
+	color: #757575;
+	padding-top: 16px;
+	padding-bottom: 16px;
+}
+
+.cabec{
+	margin-right: 16px;
+	font-size: 36px;
+}
+
+.sec{
+	padding: 0.01em 16px;
+}
 .tag{
+	color: #ffffff;
 	background-color: #009688;
 	border-radius: 4px;
-	/*display: inline-block;*/
+	display: inline-block;
 	padding-left: 8px;
 	padding-right: 8px;
 	text-align: center;
 }
 
-*{box-sizing:border-box}/*Define o box-sizing ideal para implementação das progress bars*/
+
+@media (min-width: 671px){
+	.leftc{
+		width: 31%;
+	}
+	
+	.rightc{
+		width: 64%;
+	}
+}
 
 /*Define o estilo da div maior que guarda a progress bar*/
 .container {
@@ -148,7 +144,6 @@ h2#exp{
 .skills {
 	width: 100%;
     text-align: center;
-    padding: 0.01em 16px; 
     color: white; 
 	border-radius: 16px;
 }
@@ -158,20 +153,18 @@ h2#exp{
 .java{height: 18px; width: 80%; background-color: #009688;}
 .photoshop{height: 18px; width: 75%; background-color: #009688;}
 .illustrator{height: 18px; width: 60%; background-color: #009688;} 
-.português{height: 24px; height: 24px; width: 100%; background-color: #009688;}
+.português{height: 24px; width: 100%; background-color: #009688;}
 .Inglês{height: 24px; width: 90%; background-color: #009688;}
 .Espanhol{height: 24px; width: 40%; background-color: #009688;}
 
-/*Estilo do rodapé no final da página*/
 .roda{
 	background-color: #009688;
 	margin-top: 16px;
-	border-top: 1px;
 	text-align: center;
+	padding: 0.01em 16px;
 	display: block;
 	box-sizing: inherit;
 	content:"";
-	display: table;
 	clear: both;
 	width: 100%;
 	height: 80%;
