@@ -36,23 +36,24 @@ h6{
 
 .pcontainer{
 	max-width: 1400px;
-	margin-top: 16px;
 	margin: auto;
+	box-sizing: inherit;
 }
 
 .grid{
 	padding: 0 8px;
+	margin-top: 16px;
 }
 
 .leftc{
 	padding: 0 8px;
-	width: 98%;
+	width: 100%;
 	float: left;
 }
 
 .rightc{
 	padding: 0 8px 8px 8px;
-	width: 98%;
+	width: 100%;
 	float: left;
 }
 
@@ -125,11 +126,11 @@ h6{
 
 @media (min-width: 671px){
 	.leftc{
-		width: 31%;
+		width: 32.325%;
 	}
 	
 	.rightc{
-		width: 64%;
+		width: 65.325%;
 	}
 }
 
