@@ -37,6 +37,7 @@ h6{
 .pcontainer{
 	max-width: 1400px;
 	margin-top: 16px;
+	margin: auto;
 }
 
 .grid{
