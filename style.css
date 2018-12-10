@@ -47,13 +47,13 @@ h6{
 
 .leftc{
 	padding: 0 8px;
-	width: 100%;
+	width: 97.6%;
 	float: left;
 }
 
 .rightc{
 	padding: 0 8px 8px 8px;
-	width: 100%;
+	width: 97.6%;
 	float: left;
 }
 
@@ -133,6 +133,17 @@ h6{
 		width: 66.5%;
 	}
 }
+
+@media (max-width: 1310px){
+	.leftc{
+		padding: 0 0 0px 8px;
+	}
+	
+	.rightc{
+		padding: 0 0 8px 8px;
+	}
+}
+
 
 /*Define o estilo da div maior que guarda a progress bar*/
 .container {
