@@ -162,13 +162,23 @@ h6{
 }
 
 /*Funções que definem o progresso em cada habilidade citada*/
-.c {height: 18px; width: 90%; background-color: #009688;}
+.c {height: 18px; width: 80%; background-color: #009688;}
 .java{height: 18px; width: 80%; background-color: #009688;}
 .photoshop{height: 18px; width: 75%; background-color: #009688;}
 .illustrator{height: 18px; width: 60%; background-color: #009688;} 
+.HTML{height: 18px; width: 70%; background-color: #009688;}
+.CSS{height: 18px; width: 70%; background-color: #009688;}
+.SQL{height: 18px; width: 60%; background-color: #009688;}
+.JavaScript{height: 18px; width: 40%; background-color: #009688;}
+.Bootstrap{height: 18px; width: 40%; background-color: #009688;}
+.POO{height: 18px; width: 100%; background-color: #009688;}
+
+/*Línguas*/
 .português{height: 24px; width: 100%; background-color: #009688;}
 .Inglês{height: 24px; width: 90%; background-color: #009688;}
-.Espanhol{height: 24px; width: 40%; background-color: #009688;}
+.Espanhol{height: 24px; width: 33.3%; background-color: #009688;}
+.Alemão{height: 24px; width: 33.3%; background-color: #009688;}
+
 
 .roda{
 	background-color: #009688;
