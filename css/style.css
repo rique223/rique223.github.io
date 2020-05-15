@@ -17,7 +17,7 @@ body {
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 400;
     margin: 10px 0;
 }
@@ -75,10 +75,10 @@ h6 {
 }
 
 .nome {
+    text-align: center;
     color: #ffffff;
-    padding: 0.01em 16px;
-    position: absolute;
     left: 0;
+    margin-top: -66px;
     bottom: 0;
 }
 
@@ -151,6 +151,7 @@ h6 {
 /*Define o estilo da div maior que guarda a progress bar*/
 
 .container {
+    box-shadow: inset 2px 2px 5px #000, inset -3px -3px 20px #fff;
     background-color: #dddddd;
     font-size: 12px;
     border-radius: 16px;
@@ -161,6 +162,7 @@ h6 {
 /*Define o estilo da div menor que representa a progress bar*/
 
 .skills {
+    height: 18px;
     width: 100%;
     text-align: center;
     color: white;
@@ -171,73 +173,61 @@ h6 {
 /*Funções que definem o progresso em cada habilidade citada*/
 
 .c {
-    height: 18px;
     width: 80%;
     background-color: #000000;
 }
 
 .sh {
-    height: 18px;
     width: 80%;
     background-color: #000000;
 }
 
 .java {
-    height: 18px;
     width: 80%;
     background-color: #000000;
 }
 
 .photoshop {
-    height: 18px;
     width: 75%;
     background-color: #000000;
 }
 
 .illustrator {
-    height: 18px;
     width: 60%;
     background-color: #000000;
 }
 
 .HTML {
-    height: 18px;
     width: 70%;
     background-color: #000000;
 }
 
 .CSS {
-    height: 18px;
     width: 70%;
     background-color: #000000;
 }
 
 .SQL {
-    height: 18px;
     width: 60%;
     background-color: #000000;
 }
 
 .JavaScript {
-    height: 18px;
     width: 40%;
     background-color: #000000;
 }
 
 .Bootstrap {
-    height: 18px;
     width: 40%;
     background-color: #000000;
 }
 
 .POO {
-    height: 18px;
     width: 100%;
     background-color: #000000;
 }
 
 .redes {
-    height: 18px;
     width: 75%;
     background-color: #000000;
 }
@@ -268,6 +258,9 @@ h6 {
     width: 33.3%;
     background-color: #000000;
 }
+
+
+/*Rodapé*/
 
 .roda {
     background-color: #000000;
