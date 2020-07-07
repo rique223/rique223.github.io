@@ -1,3 +1,7 @@
+html, body, h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto", sans-serif;
+}
+
 html {
     overflow-x: hidden;
     box-sizing: border-box;
@@ -74,7 +78,11 @@ h6 {
     position: relative;
 }
 
-.nome {
+.ava img {
+  width: 100%;
+}
+
+.ava h2 {
     text-align: center;
     color: #ffffff;
     left: 0;
@@ -85,6 +93,7 @@ h6 {
 .icon {
     margin-right: 16px;
     font-size: 18px;
+    color: #000;
 }
 
 .rightc1 {
@@ -169,6 +178,10 @@ h6 {
     border-radius: 16px;
 }
 
+.fa-code {
+  font-weight: bold;
+}
+
 
 /*Funções que definem o progresso em cada habilidade citada*/
 
@@ -178,7 +191,7 @@ h6 {
 }
 
 .sh {
-    width: 80%;
+    width: 60%;
     background-color: #000000;
 }
 
@@ -198,12 +211,12 @@ h6 {
 }
 
 .HTML {
-    width: 70%;
+    width: 90%;
     background-color: #000000;
 }
 
 .CSS {
-    width: 70%;
+    width: 80%;
     background-color: #000000;
 }
 
@@ -213,7 +226,7 @@ h6 {
 }
 
 .JavaScript {
-    width: 40%;
+    width: 80%;
     background-color: #000000;
 }
 
@@ -230,6 +243,26 @@ h6 {
 .redes {
     width: 75%;
     background-color: #000000;
+}
+
+.react {
+  width: 75%;
+  background-color: #000;
+}
+
+.PHP {
+  width: 60%;
+  background-color: #000;
+}
+
+.angular {
+  width: 60%;
+  background-color: #000;
+}
+
+.bootstrap {
+  width: 80%;
+  background-color: #000000;
 }
 
 
