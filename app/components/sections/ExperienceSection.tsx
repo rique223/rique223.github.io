@@ -8,9 +8,7 @@ import Button from "../ui/Button";
 import Card from "../ui/Card";
 import Section from "../ui/Section";
 
-interface ExperienceSectionProps {}
-
-const ExperienceSection: React.FC<ExperienceSectionProps> = () => {
+const ExperienceSection = () => {
     const [showAllExperiences, setShowAllExperiences] = useState(false);
 
     return (
@@ -47,9 +45,13 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = () => {
                                             <p>{exp.location}</p>
                                         </div>
                                     </div>
-                                    <p className="mb-4 leading-relaxed text-content-secondary">
-                                        {exp.description}
-                                    </p>
+                                    <div className="mb-4 leading-relaxed text-content-secondary">
+                                        <ul className="list-disc list-inside space-y-1">
+                                            {exp.detailedDescription.map((item, index) => (
+                                                <li key={index}>{item}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                     <div className="flex flex-wrap gap-2" role="list" aria-label="Technologies used">
                                         {exp.technologies.map((tech) => (
                                             <Badge key={tech} variant="tech" role="listitem">

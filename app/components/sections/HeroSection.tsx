@@ -6,9 +6,7 @@ import { scaleIn } from "../../lib/animations";
 import { SITE_CONFIG } from "../../lib/constants";
 import Button from "../ui/Button";
 
-interface HeroSectionProps {}
-
-const HeroSection: React.FC<HeroSectionProps> = () => {
+const HeroSection = () => {
     return (
         <motion.section
             className="text-center mb-24"

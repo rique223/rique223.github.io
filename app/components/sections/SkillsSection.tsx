@@ -6,9 +6,7 @@ import { SKILLS } from "../../lib/constants";
 import Card from "../ui/Card";
 import Section from "../ui/Section";
 
-interface SkillsSectionProps {}
-
-const SkillsSection: React.FC<SkillsSectionProps> = () => {
+const SkillsSection = () => {
     return (
         <Section id="skills" title="Skills">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8" role="list" aria-label="Skills by category">

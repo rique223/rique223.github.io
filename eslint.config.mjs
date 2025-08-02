@@ -42,7 +42,7 @@ const eslintConfig = [
             "import/no-duplicates": "error",
             "import/no-unresolved": "off",
             "import/order": [
-                "warning",
+                "warn",
                 {
                     groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
                     "newlines-between": "always",

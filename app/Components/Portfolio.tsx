@@ -8,9 +8,7 @@ import HeroSection from "../components/sections/HeroSection";
 import ProjectsSection from "../components/sections/ProjectsSection";
 import SkillsSection from "../components/sections/SkillsSection";
 
-interface PortfolioProps {}
-
-const Portfolio: React.FC<PortfolioProps> = () => {
+const Portfolio = () => {
     return (
         <div className="min-h-screen">
             <div className="max-w-6xl mx-auto px-6 py-16">

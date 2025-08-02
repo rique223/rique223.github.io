@@ -6,9 +6,7 @@ import { CERTIFICATIONS, EDUCATION } from "../../lib/constants";
 import Card from "../ui/Card";
 import Section from "../ui/Section";
 
-interface EducationSectionProps {}
-
-const EducationSection: React.FC<EducationSectionProps> = () => {
+const EducationSection = () => {
     return (
         <Section id="education" title="Education & Certifications">
             <div className="grid md:grid-cols-2 gap-8">

@@ -14,7 +14,7 @@ const StructuredData: React.FC = () => {
         email: SITE_CONFIG.email,
         telephone: SITE_CONFIG.phone,
         image: `${SITE_CONFIG.url}${SITE_CONFIG.avatar}`,
-        sameAs: [SITE_CONFIG.github, SITE_CONFIG.linkedin],
+        sameAs: [SITE_CONFIG.github],
         address: {
             "@type": "PostalAddress",
             addressLocality: SITE_CONFIG.location,

@@ -7,9 +7,7 @@ import Badge from "../ui/Badge";
 import Card from "../ui/Card";
 import Section from "../ui/Section";
 
-interface ProjectsSectionProps {}
-
-const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
+const ProjectsSection = () => {
     return (
         <Section id="projects" title="Notable Projects">
             <div className="grid md:grid-cols-2 gap-8" role="list" aria-label="Project portfolio">
@@ -57,7 +55,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
                                 </span>
                             </div>
                             <p className="mb-4 text-sm leading-relaxed transition-colors duration-300 text-content-secondary group-hover:text-content-primary">
-                                {project.description}
+                                {project.detailedDescription}
                             </p>
                             <div className="flex flex-wrap gap-2" role="list" aria-label="Project technologies">
                                 {project.tech.map((tech) => (

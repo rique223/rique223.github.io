@@ -1,15 +1,13 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-
+import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 
-import dynamic from "next/dynamic";
-
-import { fileSystem } from "./Utils/fs";
 import ErrorBoundary from "./components/ErrorBoundary";
 import LoadingSpinner from "./components/LoadingSpinner";
 import { useResponsive } from "./contexts/ResponsiveContext";
+import { fileSystem } from "./Utils/fs";
 
 // Lazy load heavy components
 const Portfolio = dynamic(() => import("./Components/Portfolio"), {
@@ -46,18 +44,30 @@ Welcome to my portfolio!
 Type "help" for commands or 
 scroll down for the full site.`;
 
-const getDefaultOutput = (isMobile: boolean) => {
-    return isMobile ? MOBILE_ASCII : DESKTOP_ASCII;
+const TABLET_ASCII = `
+██╗  ██╗███████╗███╗   ██╗██████╗ ██╗ ██████╗ ██╗   ██╗███████╗     ██████╗        ██████╗ 
+██║  ██║██╔════╝████╗  ██║██╔══██╗██║██╔═══██╗██║   ██║██╔════╝    ██╔════╝        ██╔══██╗
+███████║█████╗  ██╔██╗ ██║██████╔╝██║██║   ██║██║   ██║█████╗      ██║  ███╗       ██████╔╝
+██╔══██║██╔══╝  ██║╚██╗██║██╔══██╗██║██║▄▄ ██║██║   ██║██╔══╝      ██║   ██║       ██╔══██╗
+██║  ██║███████╗██║ ╚████║██║  ██║██║╚██████╔╝╚██████╔╝███████╗    ╚██████╔╝██╗    ██║  ██║██╗ 
+╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝ ╚══▀▀═╝  ╚═════╝ ╚══════╝     ╚═════╝ ╚═╝    ╚═╝  ╚═╝╚═╝
+
+Welcome to my portfolio. Feel free to explore my projects and learn more about me 🙂.
+Type "help" for available commands or scroll down for the website version.`;
+
+const getDefaultOutput = (isMobile: boolean, isTablet: boolean) => {
+    if (isMobile) return MOBILE_ASCII;
+    if (isTablet) return TABLET_ASCII;
+    return DESKTOP_ASCII;
 };
 
 export default function Home() {
-    const { isMobile } = useResponsive();
+    const { isMobile, isTablet } = useResponsive();
     const [input, setInput] = useState("");
     const [output, setOutput] = useState<string[]>([]);
     const [commandHistory, setCommandHistory] = useState<string[]>([]);
     const [currentDirectory, setCurrentDirectory] = useState("");
     const prevOutputLength = useRef(0);
-
 
     const terminalRef = useRef<HTMLDivElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -79,13 +89,15 @@ export default function Home() {
             if (
                 currentOutput.length === 0 ||
                 (currentOutput.length === 1 &&
-                    (currentOutput[0] === MOBILE_ASCII || currentOutput[0] === DESKTOP_ASCII))
+                    (currentOutput[0] === MOBILE_ASCII ||
+                        currentOutput[0] === DESKTOP_ASCII ||
+                        currentOutput[0] === TABLET_ASCII))
             ) {
-                return [getDefaultOutput(isMobile)];
+                return [getDefaultOutput(isMobile, isTablet)];
             }
             return currentOutput;
         });
-    }, [isMobile]);
+    }, [isMobile, isTablet]);
 
     useEffect(() => {
         if (terminalRef.current && output.length > prevOutputLength.current) {
@@ -198,7 +210,7 @@ Tip: Use tab completion and arrow keys for navigation!`;
         }
 
         if (cmd === "clear") {
-            setOutput([getDefaultOutput(isMobile)]);
+            setOutput([getDefaultOutput(isMobile, isTablet)]);
             return;
         }
 
@@ -208,7 +220,6 @@ Tip: Use tab completion and arrow keys for navigation!`;
 
         setOutput([...output, prompt, newOutput]);
     };
-
 
     return (
         <ErrorBoundary>
@@ -226,11 +237,9 @@ Tip: Use tab completion and arrow keys for navigation!`;
                         output={output}
                         handleCommand={handleCommand}
                         currentDirectory={currentDirectory}
-
                         terminalRef={terminalRef}
                         commandHistory={commandHistory}
                         setCommandHistory={setCommandHistory}
-                        
                     />
                 </motion.section>
 
