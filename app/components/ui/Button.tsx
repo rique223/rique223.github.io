@@ -3,7 +3,7 @@ import React from "react";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: "primary" | "secondary" | "outline";
     size?: "sm" | "md" | "lg";
-    darkMode?: boolean;
+
     children: React.ReactNode;
     href?: string;
     external?: boolean;
@@ -12,7 +12,6 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button: React.FC<ButtonProps> = ({
     variant = "primary",
     size = "md",
-    darkMode = false,
     children,
     className = "",
     href,
@@ -22,15 +21,9 @@ const Button: React.FC<ButtonProps> = ({
     const baseClasses = "font-medium rounded-lg transition-all duration-200 inline-flex items-center justify-center";
     
     const variantClasses = {
-        primary: darkMode 
-            ? "bg-emerald-600 hover:bg-emerald-700 text-white"
-            : "bg-emerald-600 hover:bg-emerald-700 text-white",
-        secondary: darkMode
-            ? "bg-gray-800/50 hover:bg-gray-700/60 border border-gray-600/30 hover:border-gray-500/50 text-gray-300 hover:text-white"
-            : "bg-white/80 hover:bg-gray-50 border border-gray-300/60 hover:border-gray-400/80 text-gray-700 hover:text-gray-900 shadow-lg",
-        outline: darkMode
-            ? "border border-gray-600 hover:border-gray-500 text-gray-300 hover:text-white"
-            : "border border-gray-400 hover:border-gray-500 text-gray-700 hover:text-gray-900",
+        primary: "btn-primary",
+        secondary: "btn-secondary", 
+        outline: "btn-outline",
     };
 
     const sizeClasses = {

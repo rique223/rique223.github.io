@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
     name: "Henrique Guimarães Ribeiro",
     title: "Software Engineer | Frontend Specialist",
-    description: "Passionate software engineer specializing in the Javascript/Typescript ecosystem with 7+ years of experience building scalable web applications. Expert in modern JavaScript, TypeScript, and performance optimization.",
+    description: "Passionate software engineer specializing in the Javascript/Typescript ecosystem with 7+ years of experience building scalable web applications. Expert in modern JavaScript, TypeScript, and Node.js.",
     email: "henrique.jobs1@gmail.com",
     phone: "+55 62 9 9949-9739",
     github: "https://github.com/rique223",
@@ -9,7 +9,7 @@ export const SITE_CONFIG = {
     location: "Remote",
     avatar: "/avatar.jpg",
     url: "https://rique223.github.io",
-} as const;
+} as const; 
 
 export const EXPERIENCES = [
     {

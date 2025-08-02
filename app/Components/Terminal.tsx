@@ -1,6 +1,10 @@
+import { Moon, Sun } from "lucide-react";
 import Image from "next/image";
 import type React from "react";
 import { useEffect, useState } from "react";
+
+import { useTheme } from "../components/ui/ThemeProvider";
+import { useResponsive } from "../contexts/ResponsiveContext";
 
 
 interface TerminalProps {
@@ -9,11 +13,9 @@ interface TerminalProps {
     output: string[];
     handleCommand: (command: string) => void;
     currentDirectory: string;
-    darkMode: boolean;
     terminalRef: React.RefObject<HTMLDivElement | null>;
     commandHistory: string[];
     setCommandHistory: (history: string[]) => void;
-    toggleDarkMode: () => void;
 }
 
 const Terminal: React.FC<TerminalProps> = ({
@@ -22,12 +24,12 @@ const Terminal: React.FC<TerminalProps> = ({
     output,
     handleCommand,
     currentDirectory,
-    darkMode,
     terminalRef,
     commandHistory,
     setCommandHistory,
-    toggleDarkMode,
 }) => {
+    const { isMobile } = useResponsive();
+    const { darkMode, toggleDarkMode } = useTheme();
     const [historyIndex, setHistoryIndex] = useState(-1);
     const [suggestions, setSuggestions] = useState<string[]>([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
@@ -92,14 +94,14 @@ const Terminal: React.FC<TerminalProps> = ({
     const formatOutput = (line: string) => {
         if (line.includes("➜") || line.startsWith("/")) {
             return (
-                <span className={darkMode ? "text-emerald-400" : "text-emerald-600"}>{line}</span>
+                <span className="text-success">{line}</span>
             );
         }
         if (line.includes("Error:") || line.includes("not found")) {
-            return <span className={darkMode ? "text-red-400" : "text-red-600"}>{line}</span>;
+            return <span className="text-error">{line}</span>;
         }
         if (line.includes("📧") || line.includes("📱") || line.includes("🔗")) {
-            return <span className={darkMode ? "text-blue-300" : "text-blue-600"}>{line}</span>;
+            return <span className="text-accent-blue">{line}</span>;
         }
         return line;
     };
@@ -107,18 +109,10 @@ const Terminal: React.FC<TerminalProps> = ({
     return (
         <div className="w-full max-w-7xl">
             <div
-                className={`h-[80vh] font-mono ${
-                    darkMode ? "bg-[#0a0a0a] text-gray-100" : "bg-white text-gray-800"
-                } flex flex-col rounded-xl shadow-2xl ${
-                    darkMode ? "border border-gray-700/30" : "border border-gray-300/60"
-                } overflow-hidden backdrop-blur-sm`}
+                            className="h-[70vh] md:h-[80vh] font-mono flex flex-col rounded-xl shadow-2xl overflow-hidden terminal-bg terminal-border"
             >
                 <div
-                    className={`relative px-4 py-3 ${
-                        darkMode
-                            ? "bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 border-b border-gray-600/50"
-                            : "bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 border-b border-gray-300/60"
-                    }`}
+                                    className="relative px-4 py-3 terminal-header"
                 >
                     <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-2">
@@ -133,11 +127,7 @@ const Terminal: React.FC<TerminalProps> = ({
 
                             <div className="flex items-center space-x-1">
                                 <div
-                                    className={`flex items-center rounded-lg px-6 py-1.5 border space-x-3 max-w-[250px] overflow-hidden ${
-                                        darkMode
-                                            ? "bg-gray-800/80 border-gray-600/30"
-                                            : "bg-gray-50 border-gray-300/50"
-                                    }`}
+                                                                    className="flex items-center rounded-lg px-6 py-1.5 border space-x-3 max-w-[250px] overflow-hidden bg-surface-secondary border-border-primary"
                                 >
                                     <Image
                                         src="/ubuntu.svg"
@@ -147,7 +137,7 @@ const Terminal: React.FC<TerminalProps> = ({
                                         className="opacity-80"
                                     />
                                     <span
-                                        className={`text-xs font-medium cursor-default ${darkMode ? "text-gray-200" : "text-gray-700"}`}
+                                        className="text-xs font-medium cursor-default text-content-secondary hidden md:block"
                                         style={{
                                             direction: "rtl",
                                             textAlign: "left",
@@ -162,19 +152,9 @@ const Terminal: React.FC<TerminalProps> = ({
                                     </span>
                                 </div>
 
-                                <button
-                                    className={`w-6 h-6 rounded-md border flex items-center justify-center transition-all duration-200 group ${
-                                        darkMode
-                                            ? "bg-gray-700/50 hover:bg-gray-600/70 border-gray-600/30 hover:border-gray-500/50"
-                                            : "bg-gray-100 hover:bg-gray-200 border-gray-300/50 hover:border-gray-400/60"
-                                    }`}
-                                >
+                                <button className="w-6 h-6 rounded-md border flex items-center justify-center transition-all duration-200 group bg-surface-secondary hover:bg-surface-tertiary border-border-primary hover:border-border-secondary">
                                     <svg
-                                        className={`w-3 h-3 transition-colors ${
-                                            darkMode
-                                                ? "text-gray-400 group-hover:text-gray-200"
-                                                : "text-gray-600 group-hover:text-gray-800"
-                                        }`}
+                                        className="w-3 h-3 transition-colors text-content-muted group-hover:text-content-secondary"
                                         fill="none"
                                         stroke="currentColor"
                                         viewBox="0 0 24 24"
@@ -202,37 +182,14 @@ const Terminal: React.FC<TerminalProps> = ({
                             </div>
                             <button
                                 onClick={toggleDarkMode}
-                                className="p-1.5 rounded-md hover:bg-gray-600/50 transition-colors group"
+                                className="p-1.5 rounded-md hover:bg-gray-600/50 dark:hover:bg-gray-700/50 transition-colors group"
                                 title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+                                aria-label="Toggle theme"
                             >
                                 {darkMode ? (
-                                    <svg
-                                        className="w-4 h-4 text-gray-400 group-hover:text-yellow-400 transition-colors"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                                        />
-                                    </svg>
+                                    <Sun size={16} className="text-gray-400 group-hover:text-yellow-400 transition-colors" />
                                 ) : (
-                                    <svg
-                                        className="w-4 h-4 text-gray-400 group-hover:text-blue-400 transition-colors"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                                        />
-                                    </svg>
+                                    <Moon size={16} className="text-gray-600 group-hover:text-gray-800 transition-colors" />
                                 )}
                             </button>
                         </div>
@@ -241,11 +198,7 @@ const Terminal: React.FC<TerminalProps> = ({
 
                 <div
                     ref={terminalRef}
-                    className={`flex-1 overflow-y-auto p-6 backdrop-blur-sm ${
-                        darkMode
-                            ? "bg-gradient-to-b from-gray-900/50 to-gray-900/80"
-                            : "bg-gradient-to-b from-gray-50/30 to-gray-100/50"
-                    }`}
+                    className="flex-1 overflow-y-auto p-6 terminal-content"
                 >
                     {output.map((line, index) => (
                         <div
@@ -260,20 +213,12 @@ const Terminal: React.FC<TerminalProps> = ({
                 <div className="relative">
                     {showSuggestions && suggestions.length > 0 && (
                         <div
-                            className={`absolute bottom-full left-6 right-6 border rounded-lg mb-2 backdrop-blur-sm shadow-xl ${
-                                darkMode
-                                    ? "bg-gray-800/95 border-gray-600/50"
-                                    : "bg-white/95 border-gray-300/60"
-                            }`}
+                            className="absolute bottom-full left-6 right-6 border rounded-lg mb-2 backdrop-blur-sm shadow-xl bg-surface border-border-primary"
                         >
                             {suggestions.map((suggestion, index) => (
                                 <div
                                     key={index}
-                                    className={`px-4 py-2 text-sm cursor-pointer first:rounded-t-lg last:rounded-b-lg ${
-                                        darkMode
-                                            ? "text-gray-300 hover:bg-gray-700/50"
-                                            : "text-gray-700 hover:bg-gray-100/60"
-                                    }`}
+                                    className="px-4 py-2 text-sm cursor-pointer first:rounded-t-lg last:rounded-b-lg text-content-secondary hover:bg-surface-secondary"
                                     onClick={() => {
                                         setInput(suggestion);
                                         setShowSuggestions(false);
@@ -287,11 +232,7 @@ const Terminal: React.FC<TerminalProps> = ({
 
                     <form
                         onSubmit={handleSubmit}
-                        className={`flex items-center p-4 border-t ${
-                            darkMode
-                                ? "bg-gray-800/50 border-gray-600/30"
-                                : "bg-gray-100/40 border-gray-300/50"
-                        }`}
+                        className="flex items-center p-4 border-t terminal-input-area"
                     >
                         <div className="flex items-center space-x-3 flex-1">
                             <Image
@@ -301,14 +242,10 @@ const Terminal: React.FC<TerminalProps> = ({
                                 height={16}
                                 className="opacity-80"
                             />
-                            <span
-                                className={`font-bold text-sm ${darkMode ? "text-emerald-400" : "text-emerald-600"}`}
-                            >
+                            <span className="font-bold text-sm text-success">
                                 ➜
                             </span>
-                            <span
-                                className={`font-medium text-sm ${darkMode ? "text-blue-400" : "text-blue-600"}`}
-                            >
+                            <span className="font-medium text-sm text-accent-blue">
                                 {currentDirectory ? `~/${currentDirectory}` : "~"}
                             </span>
                             <input
@@ -316,20 +253,14 @@ const Terminal: React.FC<TerminalProps> = ({
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 onKeyDown={handleKeyDown}
-                                className={`flex-grow outline-none bg-transparent text-sm font-mono ${
-                                    darkMode
-                                        ? "text-gray-100 placeholder-gray-500"
-                                        : "text-gray-800 placeholder-gray-400"
-                                }`}
+                                                className="flex-grow outline-none bg-transparent text-sm font-mono text-content-primary placeholder-text-muted"
                                 placeholder="Type a command..."
-                                autoFocus
+                                autoFocus={!isMobile}
                             />
                         </div>
                     </form>
                 </div>
             </div>
-
-            {/* Scroll indicator */}
             <div className="flex justify-center mt-8 animate-bounce">
                 <div className="flex flex-col items-center space-y-2 text-gray-400">
                     <span className="text-sm font-medium">Scroll down for website view</span>

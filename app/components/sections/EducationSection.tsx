@@ -6,27 +6,21 @@ import { CERTIFICATIONS, EDUCATION } from "../../lib/constants";
 import Card from "../ui/Card";
 import Section from "../ui/Section";
 
-interface EducationSectionProps {
-    darkMode: boolean;
-}
+interface EducationSectionProps {}
 
-const EducationSection: React.FC<EducationSectionProps> = ({ darkMode }) => {
+const EducationSection: React.FC<EducationSectionProps> = () => {
     return (
-        <Section id="education" title="Education & Certifications" darkMode={darkMode}>
+        <Section id="education" title="Education & Certifications">
             <div className="grid md:grid-cols-2 gap-8">
                 <motion.div variants={fadeInUp} initial="initial" animate="animate">
-                    <Card darkMode={darkMode}>
-                        <h3
-                            className={`text-lg font-semibold mb-2 ${
-                                darkMode ? "text-emerald-400" : "text-emerald-600"
-                            }`}
-                        >
+                    <Card>
+                        <h3 className="text-lg font-semibold mb-2 text-accent">
                             Education
                         </h3>
-                        <p className={`font-medium ${darkMode ? "text-gray-300" : "text-gray-800"}`}>
+                        <p className="font-medium text-content-secondary">
                             {EDUCATION.degree}
                         </p>
-                        <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+                        <p className="text-sm text-content-muted">
                             {EDUCATION.institution} • {EDUCATION.year}
                         </p>
                     </Card>
@@ -38,29 +32,17 @@ const EducationSection: React.FC<EducationSectionProps> = ({ darkMode }) => {
                     animate="animate"
                     transition={{ delay: 0.1 }}
                 >
-                    <Card darkMode={darkMode}>
-                        <h3
-                            className={`text-lg font-semibold mb-3 ${
-                                darkMode ? "text-emerald-400" : "text-emerald-600"
-                            }`}
-                        >
+                    <Card>
+                        <h3 className="text-lg font-semibold mb-3 text-accent">
                             Certifications
                         </h3>
                         <div className="space-y-2" role="list" aria-label="Professional certifications">
                             {CERTIFICATIONS.map((cert, index) => (
                                 <div key={index} role="listitem">
-                                    <p
-                                        className={`text-sm font-medium ${
-                                            darkMode ? "text-gray-300" : "text-gray-800"
-                                        }`}
-                                    >
+                                    <p className="text-sm font-medium text-content-secondary">
                                         {cert.name}
                                     </p>
-                                    <p
-                                        className={`text-xs ${
-                                            darkMode ? "text-gray-500" : "text-gray-600"
-                                        }`}
-                                    >
+                                    <p className="text-xs text-content-muted">
                                         {"issuer" in cert ? `${cert.issuer} • ` : ""}{cert.year}
                                     </p>
                                 </div>

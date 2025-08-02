@@ -7,13 +7,11 @@ import Badge from "../ui/Badge";
 import Card from "../ui/Card";
 import Section from "../ui/Section";
 
-interface ProjectsSectionProps {
-    darkMode: boolean;
-}
+interface ProjectsSectionProps {}
 
-const ProjectsSection: React.FC<ProjectsSectionProps> = ({ darkMode }) => {
+const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
     return (
-        <Section id="projects" title="Notable Projects" darkMode={darkMode}>
+        <Section id="projects" title="Notable Projects">
             <div className="grid md:grid-cols-2 gap-8" role="list" aria-label="Project portfolio">
                 {PROJECTS.map((project, index) => (
                     <motion.a
@@ -26,36 +24,21 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ darkMode }) => {
                         initial="initial"
                         animate="animate"
                         transition={{ delay: index * 0.1 }}
-                        className="block group focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded-xl"
+                        className="block group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-900 dark:focus:ring-offset-gray-800 rounded-xl"
                         aria-label={`View ${project.title} project on GitHub (opens in new tab)`}
                         role="listitem"
                     >
                         <Card
-                            darkMode={darkMode}
                             hover
-                            className={`h-full transition-all duration-300 cursor-pointer ${
-                                darkMode
-                                    ? "hover:border-emerald-500/50 hover:shadow-2xl hover:shadow-emerald-500/20"
-                                    : "hover:border-emerald-500/60 hover:shadow-2xl hover:shadow-emerald-500/10"
-                            }`}
+                            className="h-full transition-all duration-300 cursor-pointer hover:border-primary-500/50 hover:shadow-2xl hover:shadow-primary-500/20 dark:hover:border-primary-500/50 dark:hover:shadow-primary-500/20"
                         >
                             <div className="flex justify-between items-start mb-3">
                                 <div className="flex items-center space-x-2">
-                                    <h3
-                                        className={`text-lg font-semibold transition-colors duration-300 ${
-                                            darkMode
-                                                ? "text-emerald-400 group-hover:text-emerald-300"
-                                                : "text-emerald-600 group-hover:text-emerald-700"
-                                        }`}
-                                    >
+                                    <h3 className="text-lg font-semibold transition-colors duration-300 text-accent group-hover:text-primary-600 dark:group-hover:text-primary-400">
                                         {project.title}
                                     </h3>
                                     <svg
-                                        className={`w-4 h-4 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 ${
-                                            darkMode
-                                                ? "text-gray-400 group-hover:text-emerald-300"
-                                                : "text-gray-500 group-hover:text-emerald-600"
-                                        }`}
+                                        className="w-4 h-4 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 text-content-muted group-hover:text-primary-600 dark:group-hover:text-primary-400"
                                         fill="none"
                                         stroke="currentColor"
                                         viewBox="0 0 24 24"
@@ -69,23 +52,11 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ darkMode }) => {
                                         />
                                     </svg>
                                 </div>
-                                <span
-                                    className={`text-sm transition-colors duration-300 ${
-                                        darkMode
-                                            ? "text-gray-500 group-hover:text-gray-400"
-                                            : "text-gray-600 group-hover:text-gray-700"
-                                    }`}
-                                >
+                                <span className="text-sm transition-colors duration-300 text-content-muted group-hover:text-content-secondary">
                                     {project.year}
                                 </span>
                             </div>
-                            <p
-                                className={`mb-4 text-sm leading-relaxed transition-colors duration-300 ${
-                                    darkMode
-                                        ? "text-gray-300 group-hover:text-gray-200"
-                                        : "text-gray-700 group-hover:text-gray-800"
-                                }`}
-                            >
+                            <p className="mb-4 text-sm leading-relaxed transition-colors duration-300 text-content-secondary group-hover:text-content-primary">
                                 {project.description}
                             </p>
                             <div className="flex flex-wrap gap-2" role="list" aria-label="Project technologies">
@@ -93,12 +64,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ darkMode }) => {
                                     <Badge
                                         key={tech}
                                         variant="secondary"
-                                        darkMode={darkMode}
-                                        className={`transition-all duration-300 ${
-                                            darkMode
-                                                ? "group-hover:bg-blue-500/20 group-hover:text-blue-200"
-                                                : "group-hover:bg-blue-200 group-hover:text-blue-800"
-                                        }`}
+                                        className="transition-all duration-300 group-hover:bg-accent-100 group-hover:text-accent-700 dark:group-hover:bg-accent-900/40 dark:group-hover:text-accent-300"
                                         role="listitem"
                                     >
                                         {tech}

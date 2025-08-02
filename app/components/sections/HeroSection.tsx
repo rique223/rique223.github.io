@@ -6,11 +6,9 @@ import { scaleIn } from "../../lib/animations";
 import { SITE_CONFIG } from "../../lib/constants";
 import Button from "../ui/Button";
 
-interface HeroSectionProps {
-    darkMode: boolean;
-}
+interface HeroSectionProps {}
 
-const HeroSection: React.FC<HeroSectionProps> = ({ darkMode }) => {
+const HeroSection: React.FC<HeroSectionProps> = () => {
     return (
         <motion.section
             className="text-center mb-24"
@@ -26,13 +24,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode }) => {
                 initial="initial"
                 animate="animate"
             >
-                <div
-                    className={`relative w-32 h-32 rounded-full overflow-hidden border-4 shadow-xl ${
-                        darkMode
-                            ? "border-emerald-400/50 shadow-emerald-500/20"
-                            : "border-emerald-500/60 shadow-emerald-500/30"
-                    }`}
-                >
+                <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 shadow-xl border-primary-500/60 shadow-primary-500/30 dark:border-primary-400/50 dark:shadow-primary-500/20">
                     <Image
                         src={SITE_CONFIG.avatar}
                         alt={`Portrait of ${SITE_CONFIG.name}, Software Engineer`}
@@ -52,14 +44,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode }) => {
             >
                 {SITE_CONFIG.name}
             </h1>
-            <h2 className={`text-2xl mb-8 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+            <h2 className="text-2xl mb-8 text-content-secondary">
                 {SITE_CONFIG.title}
             </h2>
-            <p
-                className={`text-lg max-w-3xl mx-auto leading-relaxed mb-8 ${
-                    darkMode ? "text-gray-400" : "text-gray-700"
-                }`}
-            >
+            <p className="text-lg max-w-3xl mx-auto leading-relaxed mb-8 text-content-tertiary">
                 {SITE_CONFIG.description}
             </p>
 
@@ -76,7 +64,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode }) => {
                     variant="outline"
                     href={SITE_CONFIG.github}
                     external
-                    darkMode={darkMode}
                     aria-label="View GitHub profile (opens in new tab)"
                 >
                     GitHub

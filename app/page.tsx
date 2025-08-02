@@ -1,23 +1,26 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import dynamic from "next/dynamic";
+
 import { useEffect, useRef, useState } from "react";
 
+import dynamic from "next/dynamic";
+
+import { fileSystem } from "./Utils/fs";
 import ErrorBoundary from "./components/ErrorBoundary";
 import LoadingSpinner from "./components/LoadingSpinner";
-import { fileSystem } from "./Utils/fs";
+import { useResponsive } from "./contexts/ResponsiveContext";
 
 // Lazy load heavy components
 const Portfolio = dynamic(() => import("./Components/Portfolio"), {
-    loading: () => <LoadingSpinner size="lg" darkMode />,
+    loading: () => <LoadingSpinner size="lg" />,
 });
 
 const Terminal = dynamic(() => import("./Components/Terminal"), {
-    loading: () => <LoadingSpinner size="lg" darkMode />,
+    loading: () => <LoadingSpinner size="lg" />,
 });
 
-const DEFAULT_OUTPUT = `
+const DESKTOP_ASCII = `
 ██╗  ██╗███████╗███╗   ██╗██████╗ ██╗ ██████╗ ██╗   ██╗███████╗     ██████╗        ██████╗ ██╗██████╗ ███████╗██╗██████╗  ██████╗ 
 ██║  ██║██╔════╝████╗  ██║██╔══██╗██║██╔═══██╗██║   ██║██╔════╝    ██╔════╝        ██╔══██╗██║██╔══██╗██╔════╝██║██╔══██╗██╔═══██╗
 ███████║█████╗  ██╔██╗ ██║██████╔╝██║██║   ██║██║   ██║█████╗      ██║  ███╗       ██████╔╝██║██████╔╝█████╗  ██║██████╔╝██║   ██║
@@ -28,16 +31,33 @@ const DEFAULT_OUTPUT = `
 Welcome to my portfolio. Feel free to explore my projects and learn more about me 🙂.
 Type "help" for available commands or scroll down for the website version.`;
 
+const MOBILE_ASCII = `
+██╗  ██╗ ██████╗ ██████╗ 
+██║  ██║██╔════╝ ██╔══██╗
+███████║██║  ███╗██████╔╝
+██╔══██║██║   ██║██╔══██╗
+██║  ██║╚██████╔╝██║  ██║
+╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝
+
+👋 Henrique G. Ribeiro
+Software Engineer
+
+Welcome to my portfolio! 
+Type "help" for commands or 
+scroll down for the full site.`;
+
+const getDefaultOutput = (isMobile: boolean) => {
+    return isMobile ? MOBILE_ASCII : DESKTOP_ASCII;
+};
+
 export default function Home() {
+    const { isMobile } = useResponsive();
     const [input, setInput] = useState("");
-    const [output, setOutput] = useState<string[]>([DEFAULT_OUTPUT]);
+    const [output, setOutput] = useState<string[]>([]);
     const [commandHistory, setCommandHistory] = useState<string[]>([]);
     const [currentDirectory, setCurrentDirectory] = useState("");
-    const [darkMode, setDarkMode] = useState(true);
+    const prevOutputLength = useRef(0);
 
-    const toggleDarkMode = () => {
-        setDarkMode(!darkMode);
-    };
 
     const terminalRef = useRef<HTMLDivElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -47,13 +67,31 @@ export default function Home() {
         offset: ["start start", "end start"],
     });
 
-    const terminalOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-    const terminalScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
+    const terminalOpacity = useTransform(scrollYProgress, isMobile ? [0, 0.3] : [0, 0.5], [1, 0]);
+    const terminalScale = useTransform(
+        scrollYProgress,
+        isMobile ? [0, 0.3] : [0, 0.3],
+        isMobile ? [1, 0.2] : [1, 0.8]
+    );
 
     useEffect(() => {
-        if (terminalRef.current) {
+        setOutput((currentOutput) => {
+            if (
+                currentOutput.length === 0 ||
+                (currentOutput.length === 1 &&
+                    (currentOutput[0] === MOBILE_ASCII || currentOutput[0] === DESKTOP_ASCII))
+            ) {
+                return [getDefaultOutput(isMobile)];
+            }
+            return currentOutput;
+        });
+    }, [isMobile]);
+
+    useEffect(() => {
+        if (terminalRef.current && output.length > prevOutputLength.current) {
             terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
         }
+        prevOutputLength.current = output.length;
     }, [output]);
 
     type CommandFunction = (args: string[]) => string;
@@ -160,7 +198,7 @@ Tip: Use tab completion and arrow keys for navigation!`;
         }
 
         if (cmd === "clear") {
-            setOutput([DEFAULT_OUTPUT]);
+            setOutput([getDefaultOutput(isMobile)]);
             return;
         }
 
@@ -171,14 +209,12 @@ Tip: Use tab completion and arrow keys for navigation!`;
         setOutput([...output, prompt, newOutput]);
     };
 
+
     return (
         <ErrorBoundary>
-            <div
-                ref={containerRef}
-                className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
-            >
+            <div ref={containerRef} className="min-h-screen">
                 <motion.section
-                    className="min-h-screen flex justify-center items-center px-4"
+                    className="min-h-screen flex justify-center items-start md:items-center px-4 pt-4 md:pt-0"
                     style={{
                         opacity: terminalOpacity,
                         scale: terminalScale,
@@ -190,11 +226,11 @@ Tip: Use tab completion and arrow keys for navigation!`;
                         output={output}
                         handleCommand={handleCommand}
                         currentDirectory={currentDirectory}
-                        darkMode={darkMode}
+
                         terminalRef={terminalRef}
                         commandHistory={commandHistory}
                         setCommandHistory={setCommandHistory}
-                        toggleDarkMode={toggleDarkMode}
+                        
                     />
                 </motion.section>
 
@@ -204,7 +240,7 @@ Tip: Use tab completion and arrow keys for navigation!`;
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
                 >
-                    <Portfolio darkMode={darkMode} />
+                    <Portfolio />
                 </motion.section>
             </div>
         </ErrorBoundary>

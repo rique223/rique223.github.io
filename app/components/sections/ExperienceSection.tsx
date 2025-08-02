@@ -8,15 +8,13 @@ import Button from "../ui/Button";
 import Card from "../ui/Card";
 import Section from "../ui/Section";
 
-interface ExperienceSectionProps {
-    darkMode: boolean;
-}
+interface ExperienceSectionProps {}
 
-const ExperienceSection: React.FC<ExperienceSectionProps> = ({ darkMode }) => {
+const ExperienceSection: React.FC<ExperienceSectionProps> = () => {
     const [showAllExperiences, setShowAllExperiences] = useState(false);
 
     return (
-        <Section id="experience" title="Experience" darkMode={darkMode}>
+        <Section id="experience" title="Experience">
             <div className="space-y-8" role="list" aria-label="Work experience list">
                 {EXPERIENCES.map(
                     (exp, index) =>
@@ -29,48 +27,32 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({ darkMode }) => {
                                 transition={{ delay: index * 0.1 }}
                                 role="listitem"
                             >
-                                <Card darkMode={darkMode} hover>
+                                <Card hover>
                                     <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                                         <div>
-                                            <h3
-                                                className={`text-xl font-semibold ${
-                                                    darkMode ? "text-emerald-400" : "text-emerald-600"
-                                                }`}
-                                            >
+                                            <h3 className="text-xl font-semibold text-accent">
                                                 {exp.title}
                                                 {exp.current && (
-                                                    <Badge variant="primary" darkMode={darkMode} className="ml-2">
+                                                    <Badge variant="primary" className="ml-2">
                                                         Current
                                                     </Badge>
                                                 )}
                                             </h3>
-                                            <p
-                                                className={`text-lg ${
-                                                    darkMode ? "text-blue-300" : "text-blue-600"
-                                                }`}
-                                            >
+                                            <p className="text-lg text-accent-blue">
                                                 {exp.company}
                                             </p>
                                         </div>
-                                        <div
-                                            className={`text-sm md:text-right ${
-                                                darkMode ? "text-gray-400" : "text-gray-600"
-                                            }`}
-                                        >
+                                        <div className="text-sm md:text-right text-content-muted">
                                             <time dateTime={exp.period}>{exp.period}</time>
                                             <p>{exp.location}</p>
                                         </div>
                                     </div>
-                                    <p
-                                        className={`mb-4 leading-relaxed ${
-                                            darkMode ? "text-gray-300" : "text-gray-700"
-                                        }`}
-                                    >
+                                    <p className="mb-4 leading-relaxed text-content-secondary">
                                         {exp.description}
                                     </p>
                                     <div className="flex flex-wrap gap-2" role="list" aria-label="Technologies used">
                                         {exp.technologies.map((tech) => (
-                                            <Badge key={tech} variant="tech" darkMode={darkMode} role="listitem">
+                                            <Badge key={tech} variant="tech" role="listitem">
                                                 {tech}
                                             </Badge>
                                         ))}
@@ -81,11 +63,9 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({ darkMode }) => {
                 )}
             </div>
 
-            {/* Show/Hide All Experiences Button */}
             <div className="flex justify-center mt-8">
                 <Button
                     variant="secondary"
-                    darkMode={darkMode}
                     onClick={() => setShowAllExperiences(!showAllExperiences)}
                     aria-expanded={showAllExperiences}
                     aria-controls="experience-list"

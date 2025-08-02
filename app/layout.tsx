@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import StructuredData from "./components/StructuredData";
+import { ResponsiveProvider } from "./contexts/ResponsiveContext";
+import { ThemeProvider } from "./components/ui/ThemeProvider";
 import { SITE_CONFIG } from "./lib/constants";
 import "./globals.css";
 
@@ -124,7 +126,11 @@ export default function RootLayout({
                 >
                     Skip to main content
                 </a>
-                <main id="main-content">{children}</main>
+                <ThemeProvider>
+                    <ResponsiveProvider>
+                        <main id="main-content">{children}</main>
+                    </ResponsiveProvider>
+                </ThemeProvider>
             </body>
         </html>
     );

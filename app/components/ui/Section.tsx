@@ -5,7 +5,6 @@ interface SectionProps {
     children: React.ReactNode;
     title?: string;
     className?: string;
-    darkMode?: boolean;
     id?: string;
 }
 
@@ -13,7 +12,6 @@ const Section: React.FC<SectionProps> = ({
     children,
     title,
     className = "",
-    darkMode = false,
     id,
 }) => {
     const staggerContainer = {
@@ -36,9 +34,7 @@ const Section: React.FC<SectionProps> = ({
             {title && (
                 <h2
                     id={`${id}-heading`}
-                    className={`text-4xl font-bold mb-12 text-center ${
-                        darkMode ? "text-white" : "text-gray-900"
-                    }`}
+                    className="text-4xl font-bold mb-12 text-center text-content-primary"
                 >
                     {title}
                 </h2>
