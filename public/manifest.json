@@ -1,0 +1,27 @@
+{
+    "name": "Henrique Guimarães Ribeiro - Portfolio",
+    "short_name": "Henrique's Portfolio",
+    "description": "Passionate software engineer specializing in the Javascript/Typescript ecosystem with 7+ years of experience building scalable web applications.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1f2937",
+    "theme_color": "#10b981",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable any"
+        }
+    ],
+    "categories": ["business", "productivity"],
+    "lang": "en",
+    "dir": "ltr"
+}

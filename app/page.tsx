@@ -1,11 +1,21 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 
-import Portfolio from "./Components/Portfolio";
-import Terminal from "./Components/Terminal";
+import ErrorBoundary from "./components/ErrorBoundary";
+import LoadingSpinner from "./components/LoadingSpinner";
 import { fileSystem } from "./Utils/fs";
+
+// Lazy load heavy components
+const Portfolio = dynamic(() => import("./Components/Portfolio"), {
+    loading: () => <LoadingSpinner size="lg" darkMode />,
+});
+
+const Terminal = dynamic(() => import("./Components/Terminal"), {
+    loading: () => <LoadingSpinner size="lg" darkMode />,
+});
 
 const DEFAULT_OUTPUT = `
 ██╗  ██╗███████╗███╗   ██╗██████╗ ██╗ ██████╗ ██╗   ██╗███████╗     ██████╗        ██████╗ ██╗██████╗ ███████╗██╗██████╗  ██████╗ 
@@ -162,39 +172,41 @@ Tip: Use tab completion and arrow keys for navigation!`;
     };
 
     return (
-        <div
-            ref={containerRef}
-            className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
-        >
-            <motion.section
-                className="min-h-screen flex justify-center items-center px-4"
-                style={{
-                    opacity: terminalOpacity,
-                    scale: terminalScale,
-                }}
+        <ErrorBoundary>
+            <div
+                ref={containerRef}
+                className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
             >
-                <Terminal
-                    input={input}
-                    setInput={setInput}
-                    output={output}
-                    handleCommand={handleCommand}
-                    currentDirectory={currentDirectory}
-                    darkMode={darkMode}
-                    terminalRef={terminalRef}
-                    commandHistory={commandHistory}
-                    setCommandHistory={setCommandHistory}
-                    toggleDarkMode={toggleDarkMode}
-                />
-            </motion.section>
+                <motion.section
+                    className="min-h-screen flex justify-center items-center px-4"
+                    style={{
+                        opacity: terminalOpacity,
+                        scale: terminalScale,
+                    }}
+                >
+                    <Terminal
+                        input={input}
+                        setInput={setInput}
+                        output={output}
+                        handleCommand={handleCommand}
+                        currentDirectory={currentDirectory}
+                        darkMode={darkMode}
+                        terminalRef={terminalRef}
+                        commandHistory={commandHistory}
+                        setCommandHistory={setCommandHistory}
+                        toggleDarkMode={toggleDarkMode}
+                    />
+                </motion.section>
 
-            <motion.section
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-            >
-                <Portfolio darkMode={darkMode} />
-            </motion.section>
-        </div>
+                <motion.section
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                >
+                    <Portfolio darkMode={darkMode} />
+                </motion.section>
+            </div>
+        </ErrorBoundary>
     );
 }

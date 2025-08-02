@@ -36,7 +36,7 @@ Technologies: Github CI, Mocha, Jest, React Testing Library, Playwright, Storybo
         trinus: `Fullstack Software Engineer | Trinus Co. | Goiânia, Brazil | 04/2021 - 08/2021
 
 • Implemented internal workflow handling solution for 27+ teams
-• Successfully replaced Jira with custom solution saving $5B+ in revenue
+• Successfully replaced Jira with custom solution optimizing a $5B+ revenue stream
 • Delivered lectures on technologies used by the team
 
 Technologies: AdonisJS, React, Typescript, Styled Components, React-query, Selenium`,
