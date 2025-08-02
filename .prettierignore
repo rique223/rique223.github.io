@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+.yarn/
+
+# Production builds
+.next/
+out/
+dist/
+build/
+
+# Environment and config files
+.env*
+.gitignore
+
+# Lock files
+package-lock.json
+yarn.lock
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Generated files
+next-env.d.ts
+*.min.js
+*.min.css
+
+# Documentation
+*.md
