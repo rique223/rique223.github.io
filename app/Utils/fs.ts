@@ -1,28 +1,127 @@
 export const fileSystem: Record<string, Record<string, string>> = {
-	'/': {
-		about: 'directory',
-		experience: 'directory',
-		education: 'directory',
-		projects: 'directory',
-		volunteering: 'directory',
-		certifications: 'directory',
-	},
-	'/about': {
-		info: 'Henrique Guimarães Ribeiro\nLinkedIn | +55 62 99949-9739 | henrique.jobs1@gmail.com | GitHub\n\nSkills: Javascript, Typescript, React.js, NodeJS, MongoDB, Git, HTML, CSS, ES6, Linux, Agile, UI/UX, SASS, Figma, Distributed Systems, C, Java, SQL, PostgreSQL, MySQL, React query, Tanstack-query, Jest, Mocha, JSON, Insomnia, Postman, REST, Playwright, Golang, I18n, WAI-ARIA\n\nLanguages: Portuguese (Native), English (C2), Spanish (All professional proficiency or above)',
-	},
-	'/experience': {
-		info: "Experience:\n\n1. Frontend engineer at Rocket.Chat (Remote, 08/2021 - Present)\n   - Increased Rocket.Chat's marketplace apps exposition by 45x\n   - Improved User Experience of Rocket.Chat's apps marketplace\n   - Improved empty state messages across the app\n   - Contributed with peers from Designers to PMS and even high management\n   - Continuous Integration/Deployment Pipeline Integration\n\n2. Full-stack developer at Trinus Co. (Goiânia, Goiás, Brazil, 04/2021 - 08/2021)\n   - Implemented an internal workflow handling solution\n   - Successfully replaced software like Jira with our solution\n\n3. Web developer, intern at RedCake Digital Marketing (Goiânia, Goiás, Brazil, 02/2020 - 07/2020)\n   - Designed and implemented websites for various clients\n\n4. Software developer, Intern at Toctec (Goiânia, Goiás, Brazil, 03/2019 - 08/2019)\n   - Developed a Physical Advancement platform for the Civil Engineering firm TocTao\n\n5. Front-end developer, Voluntary at Level5 (Goiânia, Goiás, Brazil, 03/2018 - 05/2019)\n   - Volunteer experience for the Junior Company of the Institute of Informatics of the Federal University of Goiás",
-	},
-	'/education': {
-		info: "Education:\n\nBachelor's degree in Information Systems Administration\nFederal University of Goiás, Goiânia, Goiás, Brazil\nGraduated: 11/2022",
-	},
-	'/projects': {
-		info: "Projects:\n\n1. Company finder: Designed and developed a robust company information search engine using React and Kotlin. (07/2020)\n   curl https://github.com/rique223/company-finder\n\n2. Mayday: Helped digitalize the contingency process of the Civil Defense of the state of Goiás. (04/2022)\n   curl https://github.com/rique223/mayday\n\n3. Weather Forecast App: A straightforward app to show any city's current and 5-day weather forecast. (12/2020)\n   curl https://github.com/rique223/weather-forecast\n\n4. The virus tracker: A helper application that tracked the state of the COVID-19 pandemic in different cities across Brazil. (12/2020)\n   curl https://github.com/rique223/virus-tracker",
-	},
-	'/volunteering': {
-		info: 'Volunteering:\n\nCommunity education center for boys and girls: Worked as a volunteer informatics 101 teacher for impoverished kids.',
-	},
-	'/certifications': {
-		info: 'Certifications:\n\n1. EF SET English proficiency test - C2 Proficient: The highest-level certificate of English proficiency (01/2022)\n   curl https://www.efset.org/cert/example\n\n2. React - The complete guide: Robust React.js certification by Academind GmbH. (09/2023)\n   curl https://www.udemy.com/certificate/example',
-	},
+    "/": {
+        about: "directory",
+        experience: "directory",
+        education: "directory",
+        projects: "directory",
+        skills: "directory",
+        contact: "directory",
+        certifications: "directory",
+        volunteering: "directory",
+    },
+    about: {
+        info: `Henrique Guimarães Ribeiro
+Frontend Software Engineer
+
+📍 Location: Remote
+📧 henrique.jobs1@gmail.com  
+📱 +55 62 9 9949-9739
+🔗 GitHub: github.com/rique223
+
+Passionate frontend engineer specializing in the Javascript/Typescript ecosystem with 7+ years of experience building scalable web applications. Expert in modern JavaScript, TypeScript, and performance optimization.`,
+    },
+    experience: {
+        rocketchat: `Frontend Software Engineer | Rocket.Chat | Remote | 08/2021 - 03/2025
+
+• Increased marketplace apps exposition by 45x through optimized request system
+• Improved User Experience for 12M+ users across 150+ countries
+• Enhanced app marketplace functionality lifting store out of admin user base
+• Modernized and enhanced refactor putting 60+ standalone apps into new light
+• Improved empty state messages across the app through design system contributions
+• Contributed with high management on PMS and design decisions
+• Implemented CI/CD Pipeline Integration, pull requests, code reviews, load/stress testing
+
+Technologies: Github CI, Mocha, Jest, React Testing Library, Playwright, Storybook, React, React Native, Javascript, Typescript, NodeJS, Golang, I18n, React query`,
+
+        trinus: `Fullstack Software Engineer | Trinus Co. | Goiânia, Brazil | 04/2021 - 08/2021
+
+• Implemented internal workflow handling solution for 27+ teams
+• Successfully replaced Jira with custom solution saving $5B+ in revenue
+• Delivered lectures on technologies used by the team
+
+Technologies: AdonisJS, React, Typescript, Styled Components, React-query, Selenium`,
+
+        redcake: `Web Developer | RedCake Digital Marketing | Goiânia, Brazil | 02/2020 - 07/2020
+
+• Designed and implemented websites for civil engineering firm modernizing their brand
+• Created website for biggest auto insurance firms in Goiânia facing 100K+ clients per day
+• Collaborated with design and copywriting teams
+
+Technologies: WordPress, HTML, CSS, PHP, Javascript`,
+
+        toctec: `Fullstack Software Engineer | Toctec | Goiânia, Brazil | 03/2018 - 08/2019
+
+• Developed Physical Advancement platform for Civil Engineering firm TocTao
+• Platform became backbone of 1.24B BRL total revenue for construction sites across Brazilian midwest
+
+Technologies: C#, .Net, Angular 2+, SQL server`,
+    },
+    education: {
+        info: `Information Systems | Federal University of Goiás
+Goiânia, Goiás, Brazil | Graduated: 11/2022
+
+Bachelor's degree in Information Systems Administration
+Focus on software development, database management, and system architecture.`,
+    },
+    projects: {
+        "company-finder": `Company Finder (07/2020)
+Robust company information search engine using React and Kotlin
+🔗 github.com/rique223/company-finder`,
+
+        mayday: `Mayday (04/2022) 
+Digitalized contingency process for Civil Defense of Goiás state
+🔗 github.com/rique223/mayday`,
+
+        "weather-forecast": `Weather Forecast App (12/2020)
+Straightforward app showing current and 5-day weather forecasts for any city
+🔗 github.com/rique223/weather-forecast`,
+
+        "virus-tracker": `The Virus Tracker (12/2020)
+COVID-19 pandemic tracking application for different Brazilian cities
+🔗 github.com/rique223/virus-tracker`,
+    },
+    skills: {
+        frontend: `Frontend Technologies:
+• React | React Native | NextJS | Gatsby
+• TypeScript | JavaScript | HTML | CSS
+• Tailwind | Responsive Design | Accessibility
+• Selenium | Git | HTML | CSS | UI/UX | Figma`,
+
+        backend: `Backend & Tools:
+• Golang | I18n | WAI-ARIA | Vercel | Portuguese (Native)
+• React Testing Library | HTML | CSS | API Integration
+• Node.js | Pnpm | Webpack | Tanstack/React Query
+• BDD | TDD | Turbo monorepo | Swagger | AWS`,
+
+        languages: `Languages:
+• Portuguese (Native)
+• English (C2 - All professional proficiency or above)
+• Spanish (All professional proficiency or above)`,
+    },
+    contact: {
+        info: `Contact Information:
+
+📧 Email: henrique.jobs1@gmail.com
+📱 Phone: +55 62 9 9949-9739
+🔗 GitHub: github.com/rique223
+🌐 Portfolio: rique223.github.io
+
+Feel free to reach out for collaboration opportunities!`,
+    },
+    certifications: {
+        "ef-set": `EF SET English Proficiency Test - C2 Proficient (01/2022)
+The highest-level certificate of English proficiency
+🔗 Certificate: efset.org/cert/`,
+
+        "react-guide": `React - The Complete Guide (09/2023)
+Robust React.js certification by Academind GmbH
+🔗 Certificate: udemy.com/certificate/`,
+    },
+    volunteering: {
+        info: `Community Education Center for Boys and Girls
+Volunteer Informatics 101 Teacher
+
+Worked as a volunteer teaching computer skills to impoverished children, 
+helping bridge the digital divide and providing foundational technology education.`,
+    },
 };

@@ -1,91 +1,200 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import Terminal from './Components/Terminal';
-import { fileSystem } from './Utils/fs';
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+
+import Portfolio from "./Components/Portfolio";
+import Terminal from "./Components/Terminal";
+import { fileSystem } from "./Utils/fs";
+
+const DEFAULT_OUTPUT = `
+██╗  ██╗███████╗███╗   ██╗██████╗ ██╗ ██████╗ ██╗   ██╗███████╗     ██████╗        ██████╗ ██╗██████╗ ███████╗██╗██████╗  ██████╗ 
+██║  ██║██╔════╝████╗  ██║██╔══██╗██║██╔═══██╗██║   ██║██╔════╝    ██╔════╝        ██╔══██╗██║██╔══██╗██╔════╝██║██╔══██╗██╔═══██╗
+███████║█████╗  ██╔██╗ ██║██████╔╝██║██║   ██║██║   ██║█████╗      ██║  ███╗       ██████╔╝██║██████╔╝█████╗  ██║██████╔╝██║   ██║
+██╔══██║██╔══╝  ██║╚██╗██║██╔══██╗██║██║▄▄ ██║██║   ██║██╔══╝      ██║   ██║       ██╔══██╗██║██╔══██╗██╔══╝  ██║██╔══██╗██║   ██║
+██║  ██║███████╗██║ ╚████║██║  ██║██║╚██████╔╝╚██████╔╝███████╗    ╚██████╔╝██╗    ██║  ██║██║██████╔╝███████╗██║██║  ██║╚██████╔╝
+╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝ ╚══▀▀═╝  ╚═════╝ ╚══════╝     ╚═════╝ ╚═╝    ╚═╝  ╚═╝╚═╝╚═════╝ ╚══════╝╚═╝╚═╝  ╚═╝ ╚═════╝ ©
+
+Welcome to my portfolio. Feel free to explore my projects and learn more about me 🙂.
+Type "help" for available commands or scroll down for the website version.`;
 
 export default function Home() {
-	const [input, setInput] = useState('');
-	const [output, setOutput] = useState<string[]>([
-		'Welcome to Henrique Guimarães Ribeiro\'s portfolio. Type "help" for available commands.',
-	]);
-	const [currentDirectory, setCurrentDirectory] = useState('/');
-	const [darkMode, setDarkMode] = useState(true);
+    const [input, setInput] = useState("");
+    const [output, setOutput] = useState<string[]>([DEFAULT_OUTPUT]);
+    const [commandHistory, setCommandHistory] = useState<string[]>([]);
+    const [currentDirectory, setCurrentDirectory] = useState("");
+    const [darkMode, setDarkMode] = useState(true);
 
-	const terminalRef = useRef<HTMLDivElement>(null);
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
 
-	useEffect(() => {
-		if (terminalRef.current) {
-			terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
-		}
-	}, [output]);
+    const terminalRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
-	const handleCommand = (command: string) => {
-		const [cmd, ...args] = command.trim().split(' ');
-		let newOutput = '';
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end start"],
+    });
 
-		switch (cmd.toLowerCase()) {
-			case 'cd':
-				const newDir = args[0] ? (currentDirectory === '/' ? `/${args[0]}` : `${currentDirectory}/${args[0]}`) : '/';
-				if (fileSystem[newDir]) {
-					setCurrentDirectory(newDir);
-					newOutput = `Changed directory to ${newDir}`;
-				} else {
-					newOutput = `Directory not found: ${newDir}`;
-				}
-				break;
-			case 'ls':
-				if (currentDirectory === '/') {
-					newOutput = Object.keys(fileSystem[currentDirectory]).join('\n');
-				} else {
-					newOutput = Object.keys(fileSystem[currentDirectory]).includes('info') ? 'info' : 'No files found';
-				}
-				break;
-			case 'man':
-				const topic = args[0] || 'info';
-				if (fileSystem[currentDirectory] && fileSystem[currentDirectory][topic]) {
-					newOutput = fileSystem[currentDirectory][topic];
-				} else {
-					newOutput = `No manual entry for ${topic}`;
-				}
-				break;
-			case 'curl':
-				const url = args[0];
-				if (url) {
-					window.open(url, '_blank');
-					newOutput = `Opening ${url} in a new tab`;
-				} else {
-					newOutput = 'Usage: curl <url>';
-				}
-				break;
-			case 'help':
-				newOutput = 'Available commands: cd, ls, man, curl, help, clear, toggle-theme';
-				break;
-			case 'clear':
-				setOutput([]);
-				return;
-			case 'toggle-theme':
-				setDarkMode(!darkMode);
-				newOutput = `Switched to ${darkMode ? 'light' : 'dark'} mode`;
-				break;
-			default:
-				newOutput = `Command not found: ${cmd}`;
-		}
+    const terminalOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+    const terminalScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
 
-		setOutput([...output, `$ ${command}`, newOutput]);
-	};
+    useEffect(() => {
+        if (terminalRef.current) {
+            terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+        }
+    }, [output]);
 
-	return (
-		<div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-green-400' : 'bg-gray-100 text-gray-900'} flex justify-center items-center`}>
-			<Terminal
-				input={input}
-				setInput={setInput}
-				output={output}
-				handleCommand={handleCommand}
-				currentDirectory={currentDirectory}
-				darkMode={darkMode}
-				terminalRef={terminalRef}
-			/>
-		</div>
-	);
+    type CommandFunction = (args: string[]) => string;
+
+    const formatDirectoryTree = (dir: string, indent = 0): string => {
+        const spaces = "  ".repeat(indent);
+        let result = `${spaces}📁 ${dir}/\n`;
+
+        if (fileSystem[dir]) {
+            Object.keys(fileSystem[dir]).forEach((key) => {
+                if (key !== "info") {
+                    result += `${spaces}  📄 ${key}\n`;
+                }
+            });
+        }
+        return result;
+    };
+
+    const commands: Record<string, CommandFunction> = {
+        cd: (args: string[]) => {
+            if (!args[0] || args[0] === ".." || args[0] === "/") {
+                setCurrentDirectory("");
+                return `➜ Changed directory to ~`;
+            }
+            const newDir = args[0];
+            if (fileSystem[newDir]) {
+                setCurrentDirectory(newDir);
+                return `➜ Changed directory to ~/${newDir}`;
+            }
+            return `cd: no such file or directory: ${newDir}`;
+        },
+        ls: (args: string[]) => {
+            const showAll = args.includes("-la") || args.includes("-a");
+            const currentFS = fileSystem[currentDirectory || "/"];
+            const items = Object.keys(currentFS).filter((key) => key !== "..");
+
+            if (showAll) {
+                return items.map((item) => `📁 ${item}`).join("  ");
+            }
+            return items.join("  ");
+        },
+        cat: (args: string[]) => {
+            const fileName = args[0];
+            if (!fileName) return "cat: missing file operand";
+
+            const currentFS = fileSystem[currentDirectory || "/"];
+            if (currentFS && currentFS[fileName]) {
+                return currentFS[fileName];
+            }
+            return `cat: ${fileName}: No such file or directory`;
+        },
+        tree: () => {
+            let result = ".\n";
+            Object.keys(fileSystem).forEach((dir) => {
+                if (dir !== "/") {
+                    result += formatDirectoryTree(dir, 1);
+                }
+            });
+            return result;
+        },
+        history: () => {
+            return commandHistory.map((cmd, i) => `${i + 1}  ${cmd}`).join("\n");
+        },
+        browse: (args: string[]) => {
+            const url = args[0];
+            if (!url) return "Usage: browse <url>";
+
+            try {
+                window.open(url.startsWith("http") ? url : `https://${url}`, "_blank");
+                return `➜ Opening ${url} in new tab`;
+            } catch {
+                return `Error: Could not open ${url}`;
+            }
+        },
+
+        help: () => {
+            return `Available commands:
+			
+Navigation:
+  ls [-la]        List directory contents
+  cd <dir>        Change directory
+  tree            Show directory tree
+
+File Operations:
+  cat <file>      Display file contents
+
+Utilities:
+  history         Show command history
+  browse <url>    Open URL in browser
+  clear           Clear terminal
+  help            Show this help message
+
+Tip: Use tab completion and arrow keys for navigation!`;
+        },
+        clear: () => "",
+    };
+
+    const handleCommand = (command: string) => {
+        const [cmd, ...args] = command.trim().split(" ");
+
+        if (!cmd) {
+            setOutput([...output, `➜ ~/${currentDirectory} `]);
+            return;
+        }
+
+        if (cmd === "clear") {
+            setOutput([DEFAULT_OUTPUT]);
+            return;
+        }
+
+        const cmdFunction = commands[cmd];
+        const prompt = `➜ ~/${currentDirectory} ${command}`;
+        const newOutput = cmdFunction ? cmdFunction(args) : `zsh: command not found: ${cmd}`;
+
+        setOutput([...output, prompt, newOutput]);
+    };
+
+    return (
+        <div
+            ref={containerRef}
+            className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
+        >
+            <motion.section
+                className="min-h-screen flex justify-center items-center px-4"
+                style={{
+                    opacity: terminalOpacity,
+                    scale: terminalScale,
+                }}
+            >
+                <Terminal
+                    input={input}
+                    setInput={setInput}
+                    output={output}
+                    handleCommand={handleCommand}
+                    currentDirectory={currentDirectory}
+                    darkMode={darkMode}
+                    terminalRef={terminalRef}
+                    commandHistory={commandHistory}
+                    setCommandHistory={setCommandHistory}
+                    toggleDarkMode={toggleDarkMode}
+                />
+            </motion.section>
+
+            <motion.section
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+            >
+                <Portfolio darkMode={darkMode} />
+            </motion.section>
+        </div>
+    );
 }
