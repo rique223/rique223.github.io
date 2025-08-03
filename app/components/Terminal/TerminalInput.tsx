@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { useResponsive } from "../contexts/ResponsiveContext";
+import { useResponsive } from "../../contexts/ResponsiveContext";
 
 import { SuggestionList } from "./SuggestionList";
 

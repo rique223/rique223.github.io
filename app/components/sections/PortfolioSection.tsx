@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
-import LoadingSpinner from "../components/LoadingSpinner";
+import LoadingSpinner from "../LoadingSpinner";
 
-const Portfolio = dynamic(() => import("./Portfolio"), {
+const Portfolio = dynamic(() => import("../Portfolio/Portfolio"), {
     loading: () => <LoadingSpinner size="lg" />,
 });
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { scrollElementIntoView } from "../Utils/terminalHelpers";
+import { scrollElementIntoView } from "../../Utils/terminalHelpers";
 
 interface SuggestionListProps {
     suggestions: string[];

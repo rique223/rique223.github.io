@@ -1,12 +1,13 @@
 import type React from "react";
 
-import { useKeyboardNavigation } from "../hooks/useKeyboardNavigation";
-import { useSuggestions } from "../hooks/useSuggestions";
-
+import { useKeyboardNavigation } from "../../hooks/useKeyboardNavigation";
+import { useSuggestions } from "../../hooks/useSuggestions";
 import { ScrollIndicator } from "./ScrollIndicator";
+
 import { TerminalContent } from "./TerminalContent";
 import { TerminalHeader } from "./TerminalHeader";
 import { TerminalInput } from "./TerminalInput";
+
 
 
 interface TerminalProps {

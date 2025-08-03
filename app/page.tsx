@@ -1,8 +1,8 @@
 "use client";
 
 import ErrorBoundary from "./components/ErrorBoundary";
-import { PortfolioSection } from "./Components/PortfolioSection";
-import { TerminalSection } from "./Components/TerminalSection";
+import { PortfolioSection } from "./components/sections/PortfolioSection";
+import { TerminalSection } from "./components/sections/TerminalSection";
 import { useScrollAnimation } from "./hooks/useScrollAnimation";
 import { useTerminalState } from "./hooks/useTerminalState";
 

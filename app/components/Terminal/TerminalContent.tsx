@@ -1,6 +1,6 @@
 import React from "react";
 
-import { formatOutputLine } from "../Utils/terminalHelpers";
+import { formatOutputLine } from "../../Utils/terminalHelpers";
 
 interface TerminalContentProps {
     output: string[];

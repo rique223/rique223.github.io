@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { TrafficLights } from "./TrafficLights";
+
 import { ThemeToggle } from "./ThemeToggle";
+import { TrafficLights } from "./TrafficLights";
 import { UserAvatar } from "./UserAvatar";
 
 interface TerminalHeaderProps {
