@@ -57,7 +57,11 @@ const ProjectsSection = () => {
                             <p className="mb-4 text-sm leading-relaxed transition-colors duration-300 text-content-secondary group-hover:text-content-primary">
                                 {project.detailedDescription}
                             </p>
-                            <div className="flex flex-wrap gap-2" role="list" aria-label="Project technologies">
+                            <div
+                                className="flex flex-wrap gap-2"
+                                role="list"
+                                aria-label="Project technologies"
+                            >
                                 {project.tech.map((tech) => (
                                     <Badge
                                         key={tech}

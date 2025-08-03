@@ -2,11 +2,11 @@
 
 import React from "react";
 
-import EducationSection from "../components/sections/EducationSection";
-import ExperienceSection from "../components/sections/ExperienceSection";
-import HeroSection from "../components/sections/HeroSection";
-import ProjectsSection from "../components/sections/ProjectsSection";
-import SkillsSection from "../components/sections/SkillsSection";
+import EducationSection from "./EducationSection";
+import ExperienceSection from "./ExperienceSection";
+import HeroSection from "./HeroSection";
+import ProjectsSection from "./ProjectsSection";
+import SkillsSection from "./SkillsSection";
 
 const Portfolio = () => {
     return (
